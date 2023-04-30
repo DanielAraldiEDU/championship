@@ -13,15 +13,12 @@ public class Championship {
   }
 
   public void createRace(Racetrack racetrack, Date date) {
-    if (this.races.length == 20 && this.races[19] != null) {
-      System.out.println("The championship is full.");
-      return;
-    } else {
-      for (int i = 0; i < this.races.length; i++) {
-        if (this.races[i] == null) {
-          this.races[i] = new Race(racetrack, date);
-          System.out.println("Race created.");
-          return;
+    for (int index = 0; index < this.races.length; index++) {
+      if (this.races[index] == null) {
+        this.races[index] = new Race(racetrack, date);
+        System.out.println("Race " + (index + 1) + " created.");
+        if (index == this.races.length - 1) {
+          System.out.println("The championship is full.");
         }
       }
     }
