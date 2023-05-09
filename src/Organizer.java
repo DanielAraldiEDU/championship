@@ -2,44 +2,42 @@ import java.util.Date;
 
 public class Organizer {
   private String name;
-  public Championship championships;
+  public Championship[] championships;
 
   public Organizer(String name) {
     this.name = name;
+    this.championships = new Championship[12];
   }
 
-  public void createChampionship(int year, String name) {
-    this.championships = new Championship(2023, "F1");
-    this.championships.createRace(new Racetrack("United States"), new Date());
+  public int createChampionship(int year, String name) {
+    for(int index = 0; index < this.championships.length; index++) {
+      if (this.championships[index] != null) {
+        this.championships[index] = new Championship(year, name);
+        return index;
+      }
+    }
+
+    System.out.println("Championship doesn't created.");
+    return -1;
   }
 
-  public boolean subscribe(Team team) {
-    if (this.championships == null) {
-      System.out.println("There is no championship. Try create one.");
+  public boolean subscribe(Team team, int championshipNumber) {
+    if (this.championships[championshipNumber] == null) {
+      System.out.println("Championship doesn't exists!");
       return false;
     } else {
-      Team[] teams = this.championships.getTeams();
-      if (teams == null) {
-        teams = new Team[12];
-        teams[0] = team;
-        this.championships.setTeams(teams);
-        return true;
-      } else {
-        for (int i = 0; i < teams.length; i++) {
-          if (teams.length == 12) {
-            System.out.println("The championship is full.");
-            return false;
-          }
+      this.championships[championshipNumber].addTeam(team);
+      System.out.println("Team subscribed.");
+      return true;
+    }
+  }
 
-          if (teams[i] == null) {
-            teams[i] = team;
-            this.championships.setTeams(teams);
-            return true;
-          }
-        }
-
-        return false;
-      }
+  public void addRace(Racetrack racetrack, Date date, int championshipNumber) {
+    if (this.championships[championshipNumber] == null) {
+      System.out.println("Championship doesn't exists!");
+    } else {
+      this.championships[championshipNumber].createRace(racetrack, date);;
+      System.out.println("Race added.");
     }
   }
 }

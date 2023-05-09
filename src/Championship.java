@@ -10,6 +10,7 @@ public class Championship {
     this.name = name;
     this.year = year;
     this.races = new Race[20];
+    this.teams = new Team[12];
   }
 
   public void createRace(Racetrack racetrack, Date date) {
@@ -24,11 +25,11 @@ public class Championship {
     }
   }
 
-  public Team[] getTeams() {
-    return this.teams;
-  }
-
-  public void setTeams(Team[] teams) {
-    this.teams = teams;
+  public void addTeam(Team team) {
+    for (int i = 0; i < this.teams.length; i++) {
+      if (this.teams[i] == null) {
+        this.teams[i] = team;
+      }
+    }
   }
 }
