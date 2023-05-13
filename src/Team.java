@@ -12,7 +12,7 @@ public class Team {
     this.cars = new Car[2];
     this.pilots = new Pilot[2];
   }
-  
+
   public void addCar(Car car, Pilot pilot) {
     for (int i = 0; i < this.cars.length; i++) {
       if (this.cars[i] == null) {
@@ -21,9 +21,9 @@ public class Team {
         break;
       }
     }
-    
+
   }
-  
+
   public void addMechanic(Mechanic mechanic) {
     for (int i = 0; i < this.mechanics.length; i++) {
       if (this.mechanics[i] == null) {

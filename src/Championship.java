@@ -15,12 +15,15 @@ public class Championship {
 
   public void createRace(Racetrack racetrack, Date date) {
     for (int index = 0; index < this.races.length; index++) {
+      if (this.races[this.races.length - 1] != null) {
+        System.out.println("O Campeonato já está cheio!");
+        return;
+      }
+
       if (this.races[index] == null) {
         this.races[index] = new Race(racetrack, date);
-        System.out.println("Race " + (index + 1) + " created.");
-        if (index == this.races.length - 1) {
-          System.out.println("The championship is full.");
-        }
+        System.out.println("Corrida adicionada!");
+        return;
       }
     }
   }
@@ -29,7 +32,13 @@ public class Championship {
     for (int i = 0; i < this.teams.length; i++) {
       if (this.teams[i] == null) {
         this.teams[i] = team;
+        System.out.println("Time adicionado!");
+        return;
       }
     }
+  }
+
+  public String getName() {
+    return this.name;
   }
 }

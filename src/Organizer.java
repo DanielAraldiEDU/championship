@@ -17,28 +17,25 @@ public class Organizer {
       }
     }
 
-    System.out.println("Championship doesn't created.");
+    System.out.println("Campeonato não foi criado!");
     return -1;
   }
 
   public boolean subscribe(Team team, int championshipNumber) {
     if (this.championships[championshipNumber] == null) {
-      System.out.println("Championship doesn't exists!");
+      System.out.println("O Campeonato informado não existe!");
       return false;
     } else {
       this.championships[championshipNumber].addTeam(team);
-      System.out.println("Team subscribed.");
       return true;
     }
   }
 
   public void addRace(Racetrack racetrack, Date date, int championshipNumber) {
     if (this.championships[championshipNumber] == null) {
-      System.out.println("Championship doesn't exists!");
+      System.out.println("O Campeonato informado não existe!");
     } else {
       this.championships[championshipNumber].createRace(racetrack, date);
-      ;
-      System.out.println("Race added.");
     }
   }
 }
