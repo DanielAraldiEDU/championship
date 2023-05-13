@@ -10,8 +10,8 @@ public class Organizer {
   }
 
   public int createChampionship(int year, String name) {
-    for(int index = 0; index < this.championships.length; index++) {
-      if (this.championships[index] != null) {
+    for (int index = 0; index < this.championships.length; index++) {
+      if (this.championships[index] == null) {
         this.championships[index] = new Championship(year, name);
         return index;
       }
@@ -36,7 +36,8 @@ public class Organizer {
     if (this.championships[championshipNumber] == null) {
       System.out.println("Championship doesn't exists!");
     } else {
-      this.championships[championshipNumber].createRace(racetrack, date);;
+      this.championships[championshipNumber].createRace(racetrack, date);
+      ;
       System.out.println("Race added.");
     }
   }
